@@ -46,7 +46,7 @@
 		<div id="clock-main">
 			<span id="clock-year"></span>
 			<span id="clock-month"></span>
-			<span id="clock-day"></span>
+			<span id="clock-date"></span>
 			<span id="clock-hours"></span>
 			<span id="clock-minutes"></span>
 		</div>
@@ -58,7 +58,7 @@
 				let digits = 2;
 				document.getElementById("clock-year").innerText = d.getFullYear();
 				document.getElementById("clock-month").innerText = (d.getMonth() + 1).toLocaleString(locale, {minimumIntegerDigits: digits});
-				document.getElementById("clock-day").innerText = d.getDay().toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-date").innerText = d.getDate().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-hours").innerText = d.getHours().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-minutes").innerText = d.getMinutes().toLocaleString(locale, {minimumIntegerDigits: digits});
 				window.setTimeout(main, 60000);
