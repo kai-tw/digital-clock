@@ -1,0 +1,71 @@
+<html lang="zh-TW">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<title>Digital clock</title>
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+		<style>
+			html {
+				background: transparent;
+				font: 500 72px/1 "Orbitron", sans-serif;
+				overflow: hidden;
+			}
+			body {
+				position: relative;
+				margin: 0;
+				background: inherit;
+			}
+			#clock-main {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				padding: .5rem 0;
+				border-radius: .6rem;
+				transform: translate(-50%, -50%);
+				font-size: 0;
+				width: 16rem;
+				text-align: center;
+				background: #333;
+				color: #5be8ff;
+			}
+			#clock-main > span {
+				font-size: 1rem;
+			}
+			#clock-hours {
+				margin-left: 1rem;
+			}
+			#clock-year:after, #clock-month:after {
+				content: " / ";
+			}
+			#clock-hours:after {
+				content: " : ";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="clock-main">
+			<span id="clock-year"></span>
+			<span id="clock-month"></span>
+			<span id="clock-day"></span>
+			<span id="clock-hours"></span>
+			<span id="clock-minutes"></span>
+		</div>
+		<script>
+			main();
+			function main() {
+				let d = new Date;
+				let locale = "zh-tw";
+				let digits = 2;
+				document.getElementById("clock-year").innerText = d.getFullYear();
+				document.getElementById("clock-month").innerText = (d.getMonth() + 1).toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-day").innerText = d.getDay().toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-hours").innerText = d.getHours().toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-minutes").innerText = d.getMinutes().toLocaleString(locale, {minimumIntegerDigits: digits});
+				window.setTimeout(main, 60000);
+			}
+		</script>
+		<noscript>
+			It required JavaScript enabled.
+		</noscript>
+	</body>
+</html>
