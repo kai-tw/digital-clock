@@ -51,9 +51,8 @@
 			<span id="clock-minutes"></span>
 		</div>
 		<script>
-			let temp = new Date;
-			window.setTimeout(main, (59 - temp.getSeconds()) * 1000);
-			function main() {
+			main(true);
+			function main(first = 0) {
 				let d = new Date;
 				let locale = "zh-tw";
 				let digits = 2;
@@ -62,7 +61,7 @@
 				document.getElementById("clock-date").innerText = d.getDate().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-hours").innerText = d.getHours().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-minutes").innerText = d.getMinutes().toLocaleString(locale, {minimumIntegerDigits: digits});
-				window.setTimeout(main, 60000);
+				window.setTimeout(main, (first ? (59.5 - d.getSeconds()) : 60) * 1000);
 			}
 		</script>
 		<noscript>
