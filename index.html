@@ -51,7 +51,8 @@
 			<span id="clock-minutes"></span>
 		</div>
 		<script>
-			main();
+			let temp = new Date;
+			window.setTimeout(main, (59 - temp.getSeconds()) * 1000);
 			function main() {
 				let d = new Date;
 				let locale = "zh-tw";
