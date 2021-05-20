@@ -61,7 +61,7 @@
 				document.getElementById("clock-date").innerText = d.getDate().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-hours").innerText = d.getHours().toLocaleString(locale, {minimumIntegerDigits: digits});
 				document.getElementById("clock-minutes").innerText = d.getMinutes().toLocaleString(locale, {minimumIntegerDigits: digits});
-				window.setTimeout(main, (first ? (59.5 - d.getSeconds()) : 60) * 1000);
+				window.setTimeout(main, (first ? (59.8 - d.getSeconds()) : 60) * 1000);
 			}
 		</script>
 		<noscript>
