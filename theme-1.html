@@ -1,0 +1,112 @@
+<html lang="zh-TW">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<title>Digital clock</title>
+		
+		<meta content="Using JavaScript to get local time and show it in digital clock" name="description">
+		<meta content="Kai" name="author">
+		<meta content="global" name="distribution">
+		<meta content="general" name="rating">
+		<link rel="shortcut icon" href="favicon.ico">
+	
+		<meta content="Kai の工作坊" property="og:site_name">
+		<meta content="Kai の工作坊" property="og:title">
+		<meta content="Using JavaScript to get local time and show it in digital clock" property="og:description">
+		<meta content="/digital-clock/" property="og:url">
+		<meta content="zh_tw" property="og:locale">
+	
+		<meta content="website" property="og:type">
+		<meta content="/digital-clock/screenshot.jpg" property="og:image">
+		<meta content="1351" property="og:image:width">
+		<meta content="577" property="og:image:height">
+		<meta content="Digital clock" property="og:image:alt">
+	
+		<meta content="https://www.facebook.com/kai73002981" property="article:author">
+		<meta content="100002230311263" property="fb:admins">
+		<meta content="464054490444742" property="fb:app_id">
+	
+		<meta content="Kai の工作坊" name="twitter:title">
+		<meta content="summary" name="twitter:card">
+		<meta content="@Kai_Wu_TW" name="twitter:site">
+		<meta content="@Kai_Wu_TW" name="twitter:creator">
+		<meta content="/digital-clock/screenshot.jpg" name="twitter:image">
+		<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+		<style>
+			html {
+				background: transparent;
+				font: 500 72px/1 "Audiowide", sans-serif;
+				overflow: hidden;
+			}
+			body {
+				position: relative;
+				margin: 0;
+				background: inherit;
+			}
+			#clock-main {
+				margin: .5em;
+				padding: .5em;
+				width: 6em;
+				border-radius: .6em;
+				text-align: center;
+				background: #333;
+				color: #5be8ff;
+				box-sizing: border-box;
+			}
+			#clock-main hr {
+				margin: .4em 0 .18em;
+				border: none;
+				height: .05em;
+				background: #5be8ff;
+				box-shadow: 0 0 0.2em #5be8ff, 0 0 0.05em #a5fcfb;
+			}
+			#clock-main span {
+				text-shadow: 0 0 0.2em #5be8ff, 0 0 0.05em #a5fcfb;
+			}
+			#clock-year, #clock-month, #clock-date, #clock-day {
+				font-size: .6em;
+			}
+			#clock-hours, #clock-minutes {
+				font-size: 1.2em;
+			}
+			#clock-year:after, #clock-month:after {
+				content: " / ";
+			}
+			#clock-hours:after {
+				content: " : ";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="clock-main">
+			<div class="row">
+				<span id="clock-hours"></span>
+				<span id="clock-minutes"></span>
+			</div>
+			<hr>
+			<div class="row">
+				<span id="clock-month"></span>
+				<span id="clock-date"></span>
+				<span id="clock-day"></span>
+			</div>
+		</div>
+		<script>
+			main(true);
+			function main(first = 0) {
+				let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+				let d = new Date;
+				let locale = "zh-tw";
+				let digits = 2;
+				document.getElementById("clock-month").innerText = (d.getMonth() + 1).toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-date").innerText = d.getDate().toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-day").innerText = days[d.getDay()];
+				document.getElementById("clock-hours").innerText = d.getHours().toLocaleString(locale, {minimumIntegerDigits: digits});
+				document.getElementById("clock-minutes").innerText = d.getMinutes().toLocaleString(locale, {minimumIntegerDigits: digits});
+				window.setTimeout(main, (first ? (59.8 - d.getSeconds()) : 60) * 1000);
+			}
+		</script>
+		<noscript>
+			It required JavaScript enabled.
+		</noscript>
+	</body>
+</html>
